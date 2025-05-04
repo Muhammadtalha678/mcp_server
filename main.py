@@ -6,7 +6,7 @@ from mcp.server.auth import settings
 #     async def verify(self, request: AuthRequest) -> AuthResponse:
 #         return AuthResponse(is_authenticated=True, user_id="anonymous")
 
-mcp = FastMCP(name="Calculator",host='0.0.0.0',port=8000) 
+mcp = FastMCP(name="Calculator",host='127.0.0.1',port=3000) 
 # helper function for calculator
 def calculator(a,b,operation) -> dict:
     if operation not in ("+", "-", "*", "/", "%", "//", "**"):
