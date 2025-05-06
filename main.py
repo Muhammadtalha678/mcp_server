@@ -5,10 +5,11 @@ from mcp.server.auth import settings
 # class AllowAllAuthProvider(AuthServiceProvider):
 #     async def verify(self, request: AuthRequest) -> AuthResponse:
 #         return AuthResponse(is_authenticated=True, user_id="anonymous")
-
 mcp = FastMCP(name="Calculator",host='0.0.0.0',port=8000) 
+# mcp = FastMCP(name="Calculator",host='127.0.0.1',port=3000) 
 # helper function for calculator
 def calculator(a,b,operation) -> dict:
+
     if operation not in ("+", "-", "*", "/", "%", "//", "**"):
         print(operation)
         return {"Error": "Select a correct operation","data":None}
@@ -34,7 +35,7 @@ def calculator(a,b,operation) -> dict:
         elif operation == "**":
             return {"data":a**b,"Error":None}
         
-@mcp.tool()
+@mcp.tool(description="Get a result from a calculator. Supports +, -, *, /, %, //, **.")
 def mcpCalculator(a,b,operation) -> str:
     print(a,b)
     """Get a result from calculator.
